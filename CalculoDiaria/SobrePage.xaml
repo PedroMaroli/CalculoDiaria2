@@ -25,7 +25,7 @@
                            FontSize="17"
                            TextColor="{StaticResource Texto}" />
                     <BoxView Color="#E5E5E5" HeightRequest="1" />
-                    <Label Text="Desenvolvedor: SEU NOME AQUI"
+                    <Label Text="Desenvolvedor: Pedro M. de Oliveira"
                            FontSize="18" TextColor="{StaticResource Texto}" />
                     <Label Text="Ano de desenvolvimento: 2026"
                            FontSize="18" TextColor="{StaticResource Texto}" />
