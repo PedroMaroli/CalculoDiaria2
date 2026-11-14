@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculoDiaria.MainPage"
+             BackgroundColor="#F3F6FF"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <Style x:Key="Secao" TargetType="Label">
+            <Setter Property="FontSize" Value="19" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="#241F49" />
+        </Style>
+        <Style x:Key="Apoio" TargetType="Label">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="TextColor" Value="#777C99" />
+        </Style>
+        <Style x:Key="Contador" TargetType="Button">
+            <Setter Property="WidthRequest" Value="42" />
+            <Setter Property="HeightRequest" Value="42" />
+            <Setter Property="CornerRadius" Value="13" />
+            <Setter Property="BackgroundColor" Value="#EDF0FF" />
+            <Setter Property="TextColor" Value="#5845CE" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+        <Style x:Key="CartaoSuite" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="Stroke" Value="#DFE4F4" />
+            <Setter Property="StrokeThickness" Value="1.5" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 17" />
+            <Setter Property="Padding" Value="14" />
+        </Style>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout MaximumWidthRequest="700" HorizontalOptions="Center" Padding="20,28,20,32" Spacing="18">
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="✦  HOSPEDAGEM" FontSize="12" CharacterSpacing="2" FontAttributes="Bold" TextColor="#6B5BE3" />
+                    <Label Text="Sua próxima estadia" FontSize="32" FontAttributes="Bold" TextColor="#241F49" />
+                    <Label Text="Escolha a suíte ideal e planeje seus dias." FontSize="14" TextColor="#7B80A0" />
+                </VerticalStackLayout>
+                <Border Grid.Column="1" BackgroundColor="#E7E5FF" StrokeThickness="0" StrokeShape="RoundRectangle 16" Padding="14" VerticalOptions="Start">
+                    <Label Text="⌂" FontSize="25" TextColor="#5544C9" />
+                </Border>
+            </Grid>
+            <Border BackgroundColor="White" StrokeThickness="0" StrokeShape="RoundRectangle 22" Padding="18,20">
+                <VerticalStackLayout Spacing="16">
+                    <Label Text="Quem vai se hospedar?" Style="{StaticResource Secao}" />
+                    <Grid ColumnDefinitions="Auto,*,Auto,40,Auto" ColumnSpacing="10" RowDefinitions="Auto,Auto" RowSpacing="18">
+                        <Border Grid.Row="0" Grid.Column="0" WidthRequest="44" HeightRequest="44" BackgroundColor="#F1F1FF" StrokeThickness="0" StrokeShape="RoundRectangle 13">
+                            <Label Text="♟" FontSize="22" TextColor="#6653D6" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                            <Label Text="Adultos" FontAttributes="Bold" FontSize="16" TextColor="#272347" />
+                            <Label Text="A partir de 18 anos" Style="{StaticResource Apoio}" />
+                        </VerticalStackLayout>
+                        <Button Grid.Row="0" Grid.Column="2" Text="−" Style="{StaticResource Contador}" Clicked="DiminuirAdultos" />
+                        <Label Grid.Row="0" Grid.Column="3" x:Name="AdultosLabel" Text="1" FontAttributes="Bold" FontSize="19" TextColor="#241F49" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+                        <Button Grid.Row="0" Grid.Column="4" Text="+" Style="{StaticResource Contador}" Clicked="AumentarAdultos" />
+                        <Border Grid.Row="1" Grid.Column="0" WidthRequest="44" HeightRequest="44" BackgroundColor="#E9F6FF" StrokeThickness="0" StrokeShape="RoundRectangle 13">
+                            <Label Text="✿" FontSize="22" TextColor="#3188C5" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                            <Label Text="Crianças" FontAttributes="Bold" FontSize="16" TextColor="#272347" />
+                            <Label Text="Até 17 anos" Style="{StaticResource Apoio}" />
+                        </VerticalStackLayout>
+                        <Button Grid.Row="1" Grid.Column="2" Text="−" Style="{StaticResource Contador}" Clicked="DiminuirCriancas" />
+                        <Label Grid.Row="1" Grid.Column="3" x:Name="CriancasLabel" Text="0" FontAttributes="Bold" FontSize="19" TextColor="#241F49" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+                        <Button Grid.Row="1" Grid.Column="4" Text="+" Style="{StaticResource Contador}" Clicked="AumentarCriancas" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Escolha sua suíte" Style="{StaticResource Secao}" />
+                <Label Text="Valores por noite para a acomodação" Style="{StaticResource Apoio}" />
+                <Border x:Name="StandardCard" Style="{StaticResource CartaoSuite}">
+                    <Border.GestureRecognizers><TapGestureRecognizer Tapped="SelecionarStandard" /></Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="52,*,Auto" ColumnSpacing="12">
+                        <Border WidthRequest="52" HeightRequest="54" BackgroundColor="#E9F7FF" StrokeThickness="0" StrokeShape="RoundRectangle 13">
+                            <Label Text="⌂" FontSize="26" TextColor="#348CC5" VerticalOptions="Center" HorizontalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                            <Label Text="Standard" FontSize="17" FontAttributes="Bold" TextColor="#241F49" />
+                            <Label Text="Conforto e praticidade" FontSize="12" TextColor="#7B80A0" />
+                            <Label Text="Wi-Fi · Ar-condicionado" FontSize="12" TextColor="#777C99" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" Spacing="2">
+                            <Label Text="R$ 220" FontSize="17" FontAttributes="Bold" TextColor="#5444C9" HorizontalTextAlignment="End" />
+                            <Label Text="/ noite" FontSize="11" TextColor="#7B80A0" HorizontalTextAlignment="End" />
+                            <Label x:Name="StandardCheck" Text="○" FontSize="20" TextColor="#A8ACBF" HorizontalTextAlignment="End" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+                <Border x:Name="LuxoCard" Style="{StaticResource CartaoSuite}">
+                    <Border.GestureRecognizers><TapGestureRecognizer Tapped="SelecionarLuxo" /></Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="52,*,Auto" ColumnSpacing="12">
+                        <Border WidthRequest="52" HeightRequest="54" BackgroundColor="#F0ECFF" StrokeThickness="0" StrokeShape="RoundRectangle 13">
+                            <Label Text="✦" FontSize="23" TextColor="#7657D8" VerticalOptions="Center" HorizontalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                            <Label Text="Luxo" FontSize="17" FontAttributes="Bold" TextColor="#241F49" />
+                            <Label Text="Mais espaço para relaxar" FontSize="12" TextColor="#7B80A0" />
+                            <Label Text="Wi-Fi · TV · Frigobar" FontSize="12" TextColor="#777C99" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" Spacing="2">
+                            <Label Text="R$ 340" FontSize="17" FontAttributes="Bold" TextColor="#5444C9" HorizontalTextAlignment="End" />
+                            <Label Text="/ noite" FontSize="11" TextColor="#7B80A0" HorizontalTextAlignment="End" />
+                            <Label x:Name="LuxoCheck" Text="○" FontSize="20" TextColor="#A8ACBF" HorizontalTextAlignment="End" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+                <Border x:Name="PremiumCard" Style="{StaticResource CartaoSuite}">
+                    <Border.GestureRecognizers><TapGestureRecognizer Tapped="SelecionarPremium" /></Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="52,*,Auto" ColumnSpacing="12">
+                        <Border WidthRequest="52" HeightRequest="54" BackgroundColor="#FFF3DB" StrokeThickness="0" StrokeShape="RoundRectangle 13">
+                            <Label Text="★" FontSize="23" TextColor="#CE922F" VerticalOptions="Center" HorizontalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                            <Label Text="Premium" FontSize="17" FontAttributes="Bold" TextColor="#241F49" />
+                            <Label Text="Uma experiência especial" FontSize="12" TextColor="#7B80A0" />
+                            <Label Text="Vista especial · Banheira" FontSize="12" TextColor="#777C99" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" Spacing="2">
+                            <Label Text="R$ 490" FontSize="17" FontAttributes="Bold" TextColor="#5444C9" HorizontalTextAlignment="End" />
+                            <Label Text="/ noite" FontSize="11" TextColor="#7B80A0" HorizontalTextAlignment="End" />
+                            <Label x:Name="PremiumCheck" Text="○" FontSize="20" TextColor="#A8ACBF" HorizontalTextAlignment="End" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
+            <Border BackgroundColor="White" StrokeThickness="0" StrokeShape="RoundRectangle 22" Padding="18,20">
+                <VerticalStackLayout Spacing="14">
+                    <Label Text="Período da estadia" Style="{StaticResource Secao}" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="7">
+                            <Label Text="↘  Check-in" FontSize="14" FontAttributes="Bold" TextColor="#4B4E71" />
+                            <Border BackgroundColor="#F5F7FF" Stroke="#DFE4F4" StrokeShape="RoundRectangle 12" Padding="4,0">
+                                <DatePicker x:Name="CheckInPicker" Format="dd/MM/yyyy" TextColor="#241F49" FontSize="14" DateSelected="CheckInAlterado" />
+                            </Border>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="7">
+                            <Label Text="↗  Check-out" FontSize="14" FontAttributes="Bold" TextColor="#4B4E71" />
+                            <Border BackgroundColor="#F5F7FF" Stroke="#DFE4F4" StrokeShape="RoundRectangle 12" Padding="4,0">
+                                <DatePicker x:Name="CheckOutPicker" Format="dd/MM/yyyy" TextColor="#241F49" FontSize="14" DateSelected="CheckOutAlterado" />
+                            </Border>
+                        </VerticalStackLayout>
+                    </Grid>
+                    <Label x:Name="PeriodoLabel" Text="1 diária selecionada" FontSize="13" TextColor="#6B5BE3" FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Border>
+            <Border BackgroundColor="#EAE9FF" StrokeThickness="0" StrokeShape="RoundRectangle 18" Padding="16">
+                <Grid ColumnDefinitions="*,Auto">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Estimativa da estadia" FontSize="13" TextColor="#5E5B89" />
+                        <Label x:Name="TotalLabel" Text="R$ 340,00" FontAttributes="Bold" FontSize="28" TextColor="#4735BB" />
+                    </VerticalStackLayout>
+                    <Label Grid.Column="1" x:Name="NoitesLabel" Text="1 noite" FontSize="13" TextColor="#6258A9" VerticalOptions="End" />
+                </Grid>
+            </Border>
+            <Button Text="Ver resumo  →" BackgroundColor="#5844D2" TextColor="White" FontSize="17" FontAttributes="Bold" HeightRequest="58" CornerRadius="16" Clicked="AvancarClicado" />
+            <Button Text="Sobre o aplicativo" BackgroundColor="Transparent" TextColor="#6257C5" FontSize="14" HeightRequest="40" Clicked="AbrirSobreClicado" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

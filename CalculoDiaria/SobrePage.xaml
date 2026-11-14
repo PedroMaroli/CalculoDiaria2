@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculoDiaria.SobrePage"
+             Title="Sobre"
+             BackgroundColor="{StaticResource Fundo}">
+    <ScrollView>
+        <VerticalStackLayout Padding="24,52,24,32" Spacing="24">
+            <Label Text="Sobre o Aplicativo"
+                   FontSize="34"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{StaticResource Roxo}" />
+            <Border BackgroundColor="White"
+                    Stroke="#D0D0D0"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="22">
+                <VerticalStackLayout Spacing="16">
+                    <Label Text="Cálculo da Diária"
+                           FontSize="25"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource Roxo}" />
+                    <Label Text="Aplicativo para informar a quantidade de hóspedes, selecionar uma suíte e calcular a duração da estadia."
+                           FontSize="17"
+                           TextColor="{StaticResource Texto}" />
+                    <BoxView Color="#E5E5E5" HeightRequest="1" />
+                    <Label Text="Desenvolvedor: SEU NOME AQUI"
+                           FontSize="18" TextColor="{StaticResource Texto}" />
+                    <Label Text="Ano de desenvolvimento: 2026"
+                           FontSize="18" TextColor="{StaticResource Texto}" />
+                    <Label Text="Tecnologias: .NET MAUI, XAML e C#"
+                           FontSize="18" TextColor="{StaticResource Texto}" />
+                    <Label Text="Versão: 1.0"
+                           FontSize="18" TextColor="{StaticResource Texto}" />
+                </VerticalStackLayout>
+            </Border>
+            <Button Text="Voltar"
+                    Clicked="VoltarClicado"
+                    BackgroundColor="{StaticResource Roxo}"
+                    TextColor="White"
+                    FontSize="20"
+                    HeightRequest="60"
+                    CornerRadius="12" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

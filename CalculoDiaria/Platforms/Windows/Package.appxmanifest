@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+         xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+         IgnorableNamespaces="uap">
+  <Identity Name="com.exemplo.calculodiaria" Publisher="CN=Example" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>Cálculo da Diária</DisplayName>
+    <PublisherDisplayName>Exemplo</PublisherDisplayName>
+    <Logo>appicon.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+  </Dependencies>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
+      <uap:VisualElements DisplayName="Cálculo da Diária" Description="Cálculo da Diária"
+          Square150x150Logo="appicon.png" Square44x44Logo="appicon.png" BackgroundColor="transparent" />
+    </Application>
+  </Applications>
+</Package>
